@@ -2,9 +2,9 @@
     'use strict';
 
     // Almost 😜 reliable OS detection based on userAgent string
-    const detectMeta = () => {
-        const agent = window.navigator.userAgent;
-        let meta = 'win';
+    var detectMeta = function () {
+        var agent = window.navigator.userAgent;
+        var meta = 'win';
 
         if (agent.indexOf("Mac") !== -1) {
             meta = "mac";
@@ -14,32 +14,32 @@
         return meta;
     };
 
-    const toggleFooter = () => {
+    var toggleFooter = function () {
         footer.classList.toggle('fade');
     };
 
-    const init = () => {
+    var init = function () {
         metaKey.innerHTML = detectMeta();
         d.addEventListener('keydown', update);
         d.addEventListener('keyup', update);
         d.addEventListener('keypress', start);
-        footer.addEventListener('mouseover', () => {
+        footer.addEventListener('mouseover', function () {
             toggleFooter();
         });
-        footer.addEventListener('mouseout', () => {
+        footer.addEventListener('mouseout', function () {
             toggleFooter();
         });
     };
 
-    const start = () => {
-        setTimeout(() => {
+    var start = function () {
+        setTimeout(function () {
             header.classList.add('fade');
             footer.classList.add('fade');
             d.removeEventListener('keypress', start);
         }, 500);
     };
 
-    const update = (e) => {
+    var update = function (e) {
         display.innerHTML = e.keyCode;
 
         if (e.code === 'CapsLock') {
@@ -75,15 +75,15 @@
         }
     };
 
-    const display = d.getElementById('display');
-    const capsKey = d.getElementById('capsKey');
-    const altKey = d.getElementById('altKey');
-    const ctrlKey = d.getElementById('ctrlKey');
-    const shiftKey = d.getElementById('shiftKey');
-    const metaKey = d.getElementById('metaKey');
+    var display = d.getElementById('display');
+    var capsKey = d.getElementById('capsKey');
+    var altKey = d.getElementById('altKey');
+    var ctrlKey = d.getElementById('ctrlKey');
+    var shiftKey = d.getElementById('shiftKey');
+    var metaKey = d.getElementById('metaKey');
 
-    const header = d.querySelector('header');
-    const footer = d.querySelector('footer');
+    var header = d.querySelector('header');
+    var footer = d.querySelector('footer');
 
     init();
 
